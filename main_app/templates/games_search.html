@@ -6,10 +6,18 @@
 
 <h1>Add an Offer</h1>
 
-<form method="POST">
+<form action="{% url 'bgg_search' %}" method="POST">
   {% csrf_token %}
   <input type='text' name="query" placeholder="Search for a game...">
   <input type="submit" value="Search">
 </form>
+
+<br><br>
+
+{% if results %}
+  {{ results }}
+{% endif %}
+
+
 
 {% endblock %}
