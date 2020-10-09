@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 # to protect view functions: decorate with @login_required
 # to protect view classes: put LoginRequiredMixin, into the class inheritance
@@ -16,7 +17,7 @@ def signup(request):
     if form.is_valid():
       user = form.save()
       login(request, user)
-      return redirect('index')
+      return redirect('home')
     else:
       error_message = 'Invalid sign up - try again'
   form = UserCreationForm()
@@ -32,3 +33,9 @@ def home(request):
 
 def about(request):
   return render(request, 'about.html')
+
+# games views
+
+def games_search(request):
+  return render(request, 'games_search.html')
+

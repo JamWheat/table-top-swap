@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Add an Offer{% endblock %}
+
+{% block content %}
+
+<h1>Add an Offer</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  <input type='text' name="query" placeholder="Search for a game...">
+  <input type="submit" value="Search">
+</form>
+
+{% endblock %}
