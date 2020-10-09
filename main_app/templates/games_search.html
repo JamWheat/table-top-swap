@@ -18,6 +18,11 @@
   {% comment %} {{ results }} {% endcomment %}
   {% for game in results %}
     <p>{{ game.1 }} ({{ game.2 }})</p>
+    <form action='' method="POST">
+      {% csrf_token %}
+      <input type="text" name="objectid" value="{{ game.0 }}">
+      <input type="submit" value="Select Game">
+    </form>
   {% endfor %}
 {% endif %}
 
