@@ -3,7 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .games_search import search
+from .games_search import search, find
 
 
 # to protect view functions: decorate with @login_required
@@ -43,4 +43,8 @@ def games_search(request):
 def bgg_search(request):
   results = search(request.POST['query'])
   return render(request, 'games_search.html', { 'results': results })
+
+def bgg_find(request):
+  result = find(request.POST['objectid'])
+  return render(request, 'add_game.html', {'result': result })
 

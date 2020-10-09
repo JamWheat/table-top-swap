@@ -14,3 +14,10 @@ def search(query):
     response.append([each['@objectid'], each['name']['#text'], each['yearpublished']])
   # return search_json_dict['boardgames']['boardgame']
   return response
+
+def find(query):
+  search = requests.get(f'{base_url}boardgame/{query}')
+  search_xml = xmltodict.parse(search.text)
+  search_json_dumps = json.dumps(search_xml)
+  search_json_dict = json.loads(search_json_dumps)
+  return search_json_dict

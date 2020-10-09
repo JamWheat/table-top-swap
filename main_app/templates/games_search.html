@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}Add an Offer{% endblock %}
+{% block title %}Find a Game to Offer{% endblock %}
 
 {% block content %}
 
-<h1>Add an Offer</h1>
+<h1>Find a Game to Offer</h1>
 
 <form action="{% url 'bgg_search' %}" method="POST">
   {% csrf_token %}
@@ -18,9 +18,9 @@
   {% comment %} {{ results }} {% endcomment %}
   {% for game in results %}
     <p>{{ game.1 }} ({{ game.2 }})</p>
-    <form action='' method="POST">
+    <form action="{% url 'bgg_find' %}" method="POST">
       {% csrf_token %}
-      <input type="text" name="objectid" value="{{ game.0 }}">
+      <input type="hidden" name="objectid" value="{{ game.0 }}">
       <input type="submit" value="Select Game">
     </form>
   {% endfor %}
