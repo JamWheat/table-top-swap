@@ -41,6 +41,6 @@ def games_search(request):
   return render(request, 'games_search.html')
 
 def bgg_search(request):
-  search = request.POST['query']
-  return render(request, 'games_search.html', { 'results': search })
+  results = search(request.POST['query'])
+  return render(request, 'games_search.html', { 'results': results })
 

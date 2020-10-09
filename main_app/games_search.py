@@ -11,5 +11,6 @@ def search(query):
   search_json_dict = json.loads(search_json_dumps)
   response = []
   for each in search_json_dict['boardgames']['boardgame']:
-    response.append(game['name']['#text'])
+    response.append([each['@objectid'], each['name']['#text'], each['yearpublished']])
+  # return search_json_dict['boardgames']['boardgame']
   return response

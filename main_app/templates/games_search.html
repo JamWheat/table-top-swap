@@ -15,9 +15,12 @@
 <br><br>
 
 {% if results %}
-  {{ results }}
+  {% comment %} {{ results }} {% endcomment %}
+  {% for game in results %}
+    <p>{{ game.1 }} ({{ game.2 }})</p>
+  {% endfor %}
 {% endif %}
 
-
+<br><br>
 
 {% endblock %}
