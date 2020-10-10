@@ -1,3 +1,4 @@
+from django.views.generic.edit import UpdateView, DeleteView
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -64,11 +65,21 @@ def add_offer(request):
   if form.is_valid():
     new_offer = form.save(commit=False)
     new_offer.save()
-  return redirect('/')
+  return redirect('/users/profile/')
 
-def game_details(request, game_id):
-  offer = Offer.objects.get(id=game_id)
+# offer views/actions
+
+def offer_details(request, offer_id):
+  offer = Offer.objects.get(id=offer_id)
   return render(request, 'offers/details.html', { 'offer': offer })
+
+class OfferUpdate(UpdateView):
+  model = Offer
+  fields = ['condition', 'comment']
+
+class OfferDelete(DeleteView):
+  model = Offer
+  success_url = '/users/profile/'
 
 
 # user views/actions

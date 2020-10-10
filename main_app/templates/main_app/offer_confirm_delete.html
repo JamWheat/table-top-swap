@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Remove Offer{% endblock %}
+
+{% block content %}
+  <h1>Remove Offer</h1>
+
+  <h4>Are you sure you want to remove {{ object.title }} from your offer list?</h4>
+
+  <form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Remove">
+    <a href="{% url 'offer_details' offer.id %}">Cancel</a>
+  </form>
+{% endblock %}

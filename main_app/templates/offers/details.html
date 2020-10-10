@@ -6,6 +6,14 @@
 
 <h1>Offer Details</h1>
 
-{{ offer }}
+<h2>{{ offer.title }} ({{ offer.year_published }})</h2>
+<img src="{{ offer.image }}" width="400">
+<p>Condition: {{ offer.get_condition_display }}</p>
+<p>Comments: {{ offer.comment }}</p>
+
+{% if offer.user.id == user.id %}
+  <a href="{% url 'offer_update' offer.id %}">Edit</a>
+  <a href="{% url 'offer_delete' offer.id %}">Delete</a>
+{% endif %}
 
 {% endblock %}

@@ -12,7 +12,7 @@
 
 {% if offers %}
   {% for offer in offers %}
-    <a href="{% url 'game_details' offer.id %}">
+    <a href="{% url 'offer_details' offer.id %}">
       <img src="{{ offer.thumbnail }}">
       <p>{{ offer.title }} ({{ offer.year_published }})</p>
     </a>

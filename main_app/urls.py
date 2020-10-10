@@ -12,7 +12,10 @@ urlpatterns = [
   path('games/bgg_search/', views.bgg_search, name='bgg_search'),
   path('games/bgg_find/', views.bgg_find, name='bgg_find'),
   path('games/add_offer/', views.add_offer, name='add_offer'),
-  path('games/<int:game_id>/', views.game_details, name='game_details'),
+  # offer views/actions
+  path('offers/<int:offer_id>/', views.offer_details, name='offer_details'),
+  path('offers/<int:pk>/update/', views.OfferUpdate.as_view(), name='offer_update'),
+  path('offers/<int:pk>/delete/', views.OfferDelete.as_view(), name='offer_delete'),
   # user views
   path('users/profile/', views.profile, name='profile')
 ]
