@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .games_search import search, find
+from .forms import OfferForm
 
 
 # to protect view functions: decorate with @login_required
@@ -46,5 +47,6 @@ def bgg_search(request):
 
 def bgg_find(request):
   result = find(request.POST['objectid'])
-  return render(request, 'add_game.html', {'result': result })
+  offer_form = OfferForm()
+  return render(request, 'amend_game.html', {'result': result, 'offer_form': offer_form })
 
