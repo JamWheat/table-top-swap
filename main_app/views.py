@@ -47,6 +47,21 @@ def bgg_search(request):
 
 def bgg_find(request):
   result = find(request.POST['objectid'])
-  offer_form = OfferForm()
+  result['title'] = request.POST['title']
+  offer_form = OfferForm(initial={ 
+    'title': result['title'],
+    'bgg_slug': result['bgg_slug'],
+    'year_published': result['year_published'],
+    'thumbnail': result['thumbnail'],
+    'image': result['image'],
+    'user': request.user
+   })
   return render(request, 'amend_game.html', {'result': result, 'offer_form': offer_form })
+
+def add_offer(request):
+  form = OfferForm(request.POST)
+  if form.is_valid():
+    new_offer = form.save(commit=False)
+    new_offer.save()
+  return redirect('/')
 

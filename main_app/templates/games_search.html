@@ -21,6 +21,7 @@
     <form action="{% url 'bgg_find' %}" method="POST">
       {% csrf_token %}
       <input type="hidden" name="objectid" value="{{ game.0 }}">
+      <input type="hidden" name="title" value="{{ game.1 }}">
       <input type="submit" value="Select Game">
     </form>
   {% endfor %}

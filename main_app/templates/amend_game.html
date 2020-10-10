@@ -6,6 +6,15 @@
 
 <h1>Add Game to Offer List</h1>
 
+<form action="{% url 'add_offer' %}" method="post">
+  {% csrf_token %}
+  {{ offer_form.as_p }}
+  <input type='submit' value='Add Game to Offer List'>
+  {% comment %} <label for="{{ offer_form.title.id_for_label }}">Title:</label>
+  {{}}
+  <input type="submit" value="Add Game to Offer List"> {% endcomment %}
+</form>
+
 {% if result%}
   {{ result }}
 {% endif %}
