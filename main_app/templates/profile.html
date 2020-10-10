@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<h1>Your Profile</h1>
+
+{{ user.last_name }}
+
+<h3>Your offers</h3>
+
+{% if offers %}
+  {% for offer in offers %}
+    <a href="{% url 'game_details' offer.id %}">
+      <img src="{{ offer.thumbnail }}">
+      <p>{{ offer.title }} ({{ offer.year_published }})</p>
+    </a>
+  {% endfor %}
+{% else %}
+  <p>You do not have any games on offer right now.</p>
+{% endif %}
+
+
+{% endblock %}

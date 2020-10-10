@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .games_search import search, find
 from .forms import OfferForm
+from .models import Offer
 
 
 # to protect view functions: decorate with @login_required
@@ -36,7 +37,7 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
-# games views
+# games views/actions
 
 def games_search(request):
   return render(request, 'games_search.html')
@@ -64,4 +65,16 @@ def add_offer(request):
     new_offer = form.save(commit=False)
     new_offer.save()
   return redirect('/')
+
+def game_details(request, game_id):
+  offer = Offer.objects.get(id=game_id)
+  return render(request, 'offers/details.html', { 'offer': offer })
+
+
+# user views/actions
+
+def profile(request):
+  offers = Offer.objects.filter(user=request.user)
+  user = request.user
+  return render(request, 'profile.html', { 'offers': offers, 'user': user})
 
