@@ -1,6 +1,7 @@
 from django.forms import ModelForm
-from .models import Offer, Wish
+from .models import Offer, Profile
 from django import forms
+from django.contrib.auth.models import User
 
 class OfferForm(ModelForm):
   class Meta:
@@ -17,13 +18,12 @@ class OfferForm(ModelForm):
       'year_published': forms.HiddenInput(),
     }
 
-class WishForm(ModelForm):
+class UserForm(ModelForm):
   class Meta:
-    model = Wish
-    fields = '__all__'
-    widgets = {
-      'user': forms.HiddenInput(),
-      'title': forms.HiddenInput(),
-      'bgg_slug': forms.HiddenInput(),
-      'year_published': forms.HiddenInput(),
-    }
+    model = User
+    fields = ('first_name', 'last_name', 'email')
+
+class ProfileForm(ModelForm):
+  class Meta:
+    model = Profile
+    fields = ('icon',)

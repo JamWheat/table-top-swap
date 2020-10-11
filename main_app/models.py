@@ -59,14 +59,4 @@ class Offer(models.Model):
 
   def get_absolute_url(self):
     return reverse('offer_details', kwargs={'offer_id': self.id})
-
-class Wish(models.Model):
-  title = models.CharField(max_length=200)
-  bgg_slug = models.IntegerField()
-  year_published = models.IntegerField()
-  comment = models.TextField(max_length=200)
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-  def __str__(self):
-    return self.title
   
