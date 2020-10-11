@@ -64,6 +64,7 @@ def add_offer(request):
   form = OfferForm(request.POST)
   if form.is_valid():
     new_offer = form.save(commit=False)
+    # new_offer.list_type = 'offer'
     new_offer.save()
   return redirect('/users/profile/')
 
@@ -85,7 +86,8 @@ class OfferDelete(DeleteView):
 # user views/actions
 
 def profile(request):
-  offers = Offer.objects.filter(user=request.user)
+  offers = Offer.objects.filter(user=request.user, list_type='O')
+  wishes = Offer.objects.filter(user=request.user, list_type='W')
   user = request.user
-  return render(request, 'profile.html', { 'offers': offers, 'user': user})
+  return render(request, 'profile.html', { 'offers': offers, 'wishes': wishes, 'user': user})
 

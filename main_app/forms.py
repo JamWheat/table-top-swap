@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Offer
+from .models import Offer, Wish
 from django import forms
 
 class OfferForm(ModelForm):
@@ -14,5 +14,16 @@ class OfferForm(ModelForm):
       'bgg_slug': forms.HiddenInput(),
       'image': forms.HiddenInput(),
       'thumbnail': forms.HiddenInput(),
+      'year_published': forms.HiddenInput(),
+    }
+
+class WishForm(ModelForm):
+  class Meta:
+    model = Wish
+    fields = '__all__'
+    widgets = {
+      'user': forms.HiddenInput(),
+      'title': forms.HiddenInput(),
+      'bgg_slug': forms.HiddenInput(),
       'year_published': forms.HiddenInput(),
     }

@@ -8,7 +8,7 @@
 
 {{ user.last_name }}
 
-<h3>Your offers</h3>
+<h3>Your Offer List</h3>
 
 {% if offers %}
   {% for offer in offers %}
@@ -18,7 +18,22 @@
     </a>
   {% endfor %}
 {% else %}
-  <p>You do not have any games on offer right now.</p>
+  <p>You do not have any games on your Offer List right now.</p>
+{% endif %}
+
+<h3>Your Wish List</h3>
+
+{% if wishes %}
+  <ul>
+    {% for wish in wishes %}
+      <li>
+        {{ wish.title }} ({{ wish.year_published }})<br>
+        {{ wish.comment }}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>You do not have any games on your Wish List right now.</p>
 {% endif %}
 
 
