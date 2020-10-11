@@ -101,6 +101,10 @@ class OfferDelete(DeleteView):
   model = Offer
   success_url = '/users/profile/'
 
+def offer_search(request):
+  results = Offer.objects.filter(title__icontains=request.POST['query'])
+  return render(request, 'home.html', {'results': results})
+
 
 # user views/actions
 

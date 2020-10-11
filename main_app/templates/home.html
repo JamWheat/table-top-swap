@@ -6,4 +6,16 @@
 
 <h1>Welcome to TableTopSwap</h1>
 
+<h3>Search Offers</h3>
+
+<form action="{% url 'offer_search' %}" method="POST">
+  {% csrf_token %}
+  <input type='text' name="query" placeholder="Search for an offer...">
+  <input type="submit" value="Search">
+</form>
+
+{% if results %}
+  {{ results }}
+{% endif %}
+
 {% endblock %}

@@ -17,6 +17,7 @@ urlpatterns = [
   path('offers/<int:offer_id>/', views.offer_details, name='offer_details'),
   path('offers/<int:pk>/update/', views.OfferUpdate.as_view(), name='offer_update'),
   path('offers/<int:pk>/delete/', views.OfferDelete.as_view(), name='offer_delete'),
+  path('offer/search/', views.offer_search, name="offer_search"),
   # user views
   path('users/profile/', views.profile, name='profile')
 ]

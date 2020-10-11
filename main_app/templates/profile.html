@@ -6,6 +6,12 @@
 
 <h1>Your Profile</h1>
 
+{% if user.profile.icon %}
+  <img src="{{ user.profile.icon }}"><br>
+{% else %}
+  <img src="https://i.imgur.com/2fs59Xy.png"><br>
+{% endif %}
+
 <a href="{% url 'update_profile' %}">Update your profile</a>
 
 <h3>Your Offer List</h3>
