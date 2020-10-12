@@ -34,7 +34,6 @@ class Profile(models.Model):
       instance.profile.save()
 
 
-
 class Offer(models.Model):
   title = models.CharField(max_length=200)
   bgg_slug = models.IntegerField()
@@ -60,3 +59,12 @@ class Offer(models.Model):
   def get_absolute_url(self):
     return reverse('offer_details', kwargs={'offer_id': self.id})
   
+class Message(models.Model):
+  content = models.TextField(max_length=300)
+  sender = models.ForeignKey(User, on_delete=models.CASCADE)
+  receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='receiver')
+
+class Reply(models.Model):
+  content = models.TextField(max_length=300)
+  sender = models.ForeignKey(User, on_delete=models.CASCADE)
+  message = models.ForeignKey(Message, on_delete=models.CASCADE)

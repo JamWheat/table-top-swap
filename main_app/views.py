@@ -103,7 +103,7 @@ class OfferDelete(DeleteView):
   success_url = '/users/profile/'
 
 def offer_search(request):
-  offers = Offer.objects.filter(title__icontains=request.POST['query'])
+  offers = Offer.objects.filter(title__icontains=request.POST['query']).exclude(user=request.user)
   return render(request, 'home.html', {'offers':offers})
 
 
@@ -117,9 +117,11 @@ def profile(request):
 
 def user_page(request, user_id):
   user_focus = User.objects.get(id=user_id)
-  user_offers = Offer.objects.filter(user=user_id)
+  user_offers = Offer.objects.filter(user=user_id, list_type='O')
+  user_wishes = Offer.objects.filter(user=user_id, list_type='W')
   return render(request, 'users/details.html', {
     'user_focus': user_focus,
-    'user_offers': user_offers
+    'user_offers': user_offers,
+    'user_wishes': user_wishes
   })
 
