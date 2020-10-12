@@ -41,6 +41,7 @@ class ReplyForm(ModelForm):
   class Meta:
     model = Reply
     fields = '__all__'
-    # widgets = {
-    #   'sender': forms.HiddenInput(),
-    # }
+    widgets = {
+      'sender': forms.HiddenInput(),
+      'message': forms.HiddenInput(),
+    }

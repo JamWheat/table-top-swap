@@ -19,9 +19,20 @@
     {% for reply in message.reply_set.all %}
       <p>Replier: {{ reply.sender }}</p>
       <p>Reply: {{ reply.reply }}</p>
+      {% if reply.sender.id == user.id %}
+        <a href="{% url 'reply_update' reply.id %}">Edit</a>
+        <a href="{% url 'reply_delete' reply.id %}">Delete</a>
+      {% endif %}
     {% endfor %}
-    <form action="{% url 'reply_new' %}" method="POST">
+    {% comment %} <form action="{% url 'reply_new' %}" method="POST">
       {% csrf_token %}
+      <input type="hidden" name="message" value="{{ message.id }}">
+      <input type='submit' value='Add Reply'>
+    </form> {% endcomment %}
+    <form action="{% url 'reply_create' %}" method="POST">
+      {% csrf_token %}
+      <input type='text' name="reply">
+      <input type="hidden" name="sender" value="{{ user.id }}">
       <input type="hidden" name="message" value="{{ message.id }}">
       <input type='submit' value='Add Reply'>
     </form>
@@ -39,6 +50,17 @@
       <p>Received from: {{ message.sender }}</p>
       <p>Message: {{ message.message }}</p>
     </div><br>
+     {% for reply in message.reply_set.all %}
+      <p>Replier: {{ reply.sender }}</p>
+      <p>Reply: {{ reply.reply }}</p>
+    {% endfor %}
+    <form action="{% url 'reply_create' %}" method="POST">
+      {% csrf_token %}
+      <input type='text' name="reply">
+      <input type="hidden" name="sender" value="{{ user.id }}">
+      <input type="hidden" name="message" value="{{ message.id }}">
+      <input type='submit' value='Add Reply'>
+    </form>
   {% endfor %}
 {% else %}
   <p>You have no received messages at the moment.</p>

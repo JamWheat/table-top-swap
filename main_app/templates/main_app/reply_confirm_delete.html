@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Delete Reply
+{% endblock %}
+
+{% block content %}
+<h1>Delete Reply</h1>
+
+
+<h4>Are you sure you want to delte this reply?</h4>
+
+<div>
+  <p>Sent from: {{ object.sender }}</p>
+  <p>Reply: {{ object.reply }}</p>
+</div>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Delete">
+  <a href="{% url 'messages_view' %}">Cancel</a>
+</form>
+{% endblock %}

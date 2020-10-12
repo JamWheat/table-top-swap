@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from .games_search import search, find
 from .forms import OfferForm, UserForm, ProfileForm, MessageForm, ReplyForm
-from .models import Offer, Message
+from .models import Offer, Message, Reply
 
 
 # to protect view functions: decorate with @login_required
@@ -159,16 +159,16 @@ class MessageDelete(DeleteView):
 
 # reply views/actions
 
-def reply_new(request):
-  message = Message.objects.get(id=request.POST['message'])
-  reply_form = ReplyForm(initial={ 
-    'sender': request.user.id,
-    'message': request.POST['message']
-  })
-  return render(request, 'replies/reply_new.html', { 
-    'reply_form': reply_form ,
-    'message': message
-  })
+# def reply_new(request):
+#   message = Message.objects.get(id=request.POST['message'])
+#   reply_form = ReplyForm(initial={ 
+#     'sender': request.user.id,
+#     'message': request.POST['message']
+#   })
+#   return render(request, 'replies/reply_new.html', { 
+#     'reply_form': reply_form ,
+#     'message': message
+#   })
 
 def reply_create(request):
   form = ReplyForm(request.POST)
@@ -176,3 +176,11 @@ def reply_create(request):
     new_message = form.save(commit=False)
     new_message.save()
   return redirect('/messages/view/')
+
+class ReplyUpdate(UpdateView):
+  model = Reply
+  fields = ['reply']
+
+class ReplyDelete(DeleteView):
+  model = Reply
+  success_url = '/messages/view/'

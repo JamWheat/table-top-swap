@@ -28,6 +28,8 @@ urlpatterns = [
   path('messages/<int:pk>/update/', views.MessageUpdate.as_view(), name='message_update'),
   path('messages/<int:pk>/delete/', views.MessageDelete.as_view(), name='message_delete'),
   # reply views/actions
-  path('reply/new', views.reply_new, name='reply_new'),
-  path('reply/create', views.reply_create, name='reply_create')
+  # path('reply/new', views.reply_new, name='reply_new'),
+  path('reply/create', views.reply_create, name='reply_create'),
+  path('reply/<int:pk>/update/', views.ReplyUpdate.as_view(), name='reply_update'),
+  path('reply/<int:pk>/delete/', views.ReplyDelete.as_view(), name='reply_delete'),
 ]
