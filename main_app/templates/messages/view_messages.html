@@ -15,6 +15,12 @@
       <p>Message: {{ message.message }}</p>
       <a href="{% url 'message_update' message.id %}">Edit</a>
       <a href="{% url 'message_delete' message.id %}">Delete</a>
+
+      <form action="{% url 'reply_new' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="message" value="{{ message.id }}">
+        <input type='submit' value='Add Reply'>
+      </form>
     </div><br>
   {% endfor %}
 {% else %}

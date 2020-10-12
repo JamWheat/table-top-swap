@@ -36,3 +36,11 @@ class MessageForm(ModelForm):
       'sender': forms.HiddenInput(),
       'receiver': forms.HiddenInput(),
     }
+
+class ReplyForm(ModelForm):
+  class Meta:
+    model = Reply
+    fields = '__all__'
+    # widgets = {
+    #   'sender': forms.HiddenInput(),
+    # }

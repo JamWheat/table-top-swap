@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Reply{% endblock %}
+
+{% block content %}
+
+<h1>Add a Reply</h1>
+
+{{ message.message }}
+
+<form action="{% url 'reply_create' %}" method="POST">
+  {% csrf_token %}
+  {{ reply_form.as_p }}
+  <input type='submit' value='Add Reply'>
+</form>
+
+{% endblock %}
