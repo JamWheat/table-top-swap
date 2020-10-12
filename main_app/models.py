@@ -60,11 +60,11 @@ class Offer(models.Model):
     return reverse('offer_details', kwargs={'offer_id': self.id})
   
 class Message(models.Model):
-  content = models.TextField(max_length=300)
+  message = models.TextField(max_length=300)
   sender = models.ForeignKey(User, on_delete=models.CASCADE)
   receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='receiver')
 
 class Reply(models.Model):
-  content = models.TextField(max_length=300)
+  reply = models.TextField(max_length=300)
   sender = models.ForeignKey(User, on_delete=models.CASCADE)
   message = models.ForeignKey(Message, on_delete=models.CASCADE)

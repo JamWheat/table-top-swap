@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Offer, Profile
+from .models import Offer, Profile, Message
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 
@@ -13,5 +13,6 @@ class UserAdmin(BaseUserAdmin):
 
 # Register your models here.
 admin.site.register(Offer)
+admin.site.register(Message)
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)

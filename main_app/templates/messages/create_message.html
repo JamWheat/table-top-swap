@@ -6,7 +6,7 @@
 
 <h1>Send Message</h1>
 
-<form action="{% url 'message_send' %}" method="post">
+<form action="{% url 'message_send' %}" method="POST">
   {% csrf_token %}
   {{ message_form.as_p }}
   <input type='submit' value='Send Message'>

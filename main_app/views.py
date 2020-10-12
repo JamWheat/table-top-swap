@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from .games_search import search, find
 from .forms import OfferForm, UserForm, ProfileForm, MessageForm
-from .models import Offer
+from .models import Offer, Message
 
 
 # to protect view functions: decorate with @login_required
@@ -136,7 +136,16 @@ def message_create(request):
 
 def message_send(request):
   form = MessageForm(request.POST)
+  print(form)
   if form.is_valid():
     new_message = form.save(commit=False)
     new_message.save()
   return redirect('/users/profile/')
+
+def messages_view(request):
+  sent_messages = Message.objects.filter(sender=request.user)
+  received_messages = Message.objects.filter(receiver=request.user)
+  return render(request, 'messages/view_messages.html', { 
+    'sent_messages': sent_messages,
+    'received_messages': received_messages
+  })
