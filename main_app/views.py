@@ -149,3 +149,11 @@ def messages_view(request):
     'sent_messages': sent_messages,
     'received_messages': received_messages
   })
+
+class MessageUpdate(UpdateView):
+  model = Message
+  fields = ['message']
+
+class MessageDelete(DeleteView):
+  model = Message
+  success_url = '/messages/view/'

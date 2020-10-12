@@ -6,6 +6,32 @@
 
 <h1>View Message</h1>
 
+<h3>Sent Mesages</h3>
 
+{% if sent_messages %}
+  {% for message in sent_messages %}
+    <div>
+      <p>Sent to: {{ message.receiver }}</p>
+      <p>Message: {{ message.message }}</p>
+      <a href="{% url 'message_update' message.id %}">Edit</a>
+      <a href="{% url 'message_delete' message.id %}">Delete</a>
+    </div><br>
+  {% endfor %}
+{% else %}
+  <p>You have no sent messages at the moment.</p>
+{% endif %}
+
+<h3>Received Mesages</h3>
+
+{% if received_messages %}
+  {% for message in received_messages %}
+    <div>
+      <p>Received from: {{ message.sender }}</p>
+      <p>Message: {{ message.message }}</p>
+    </div><br>
+  {% endfor %}
+{% else %}
+  <p>You have no received messages at the moment.</p>
+{% endif %}
 
 {% endblock %}

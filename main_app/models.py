@@ -64,7 +64,13 @@ class Message(models.Model):
   sender = models.ForeignKey(User, on_delete=models.CASCADE)
   receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='receiver')
 
+  def get_absolute_url(self):
+    return reverse('messages_view')#, kwargs={'message_id': self.id})
+
 class Reply(models.Model):
   reply = models.TextField(max_length=300)
   sender = models.ForeignKey(User, on_delete=models.CASCADE)
   message = models.ForeignKey(Message, on_delete=models.CASCADE)
+
+  def get_absolute_url(self):
+    return reverse('messages_view')#, kwargs={'message_id': self.id})
