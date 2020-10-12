@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Offer, Profile
+from .models import Offer, Profile, Message, Reply
 from django import forms
 from django.contrib.auth.models import User
 
@@ -27,3 +27,12 @@ class ProfileForm(ModelForm):
   class Meta:
     model = Profile
     fields = ('icon',)
+
+class MessageForm(ModelForm):
+  class Meta:
+    model = Message
+    fields = '__all__'
+    widgets = {
+      'sender': forms.HiddenInput(),
+      'receiver': forms.HiddenInput(),
+    }

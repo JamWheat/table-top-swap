@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from .games_search import search, find
-from .forms import OfferForm, UserForm, ProfileForm
+from .forms import OfferForm, UserForm, ProfileForm, MessageForm
 from .models import Offer
 
 
@@ -125,3 +125,11 @@ def user_page(request, user_id):
     'user_wishes': user_wishes
   })
 
+# messages views and actions
+
+def message_create(request):
+  message_form = MessageForm(initial={ 
+    'sender': request.user.id,
+    'reciever': request.POST['receiver']
+  })
+  return render(request, 'messages/create_message.html', { 'message_form': message_form })
