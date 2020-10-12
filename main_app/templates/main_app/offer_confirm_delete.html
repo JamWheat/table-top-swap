@@ -1,15 +1,29 @@
 {% extends 'base.html' %}
 
-{% block title %}Remove Offer{% endblock %}
+{% block title %}
+{% if object.list_type == 'O' %}
+  Remove Offer from Offer List
+{% else %}
+  Remove Wish List Item
+{% endif %}
+{% endblock %}
 
 {% block content %}
-  <h1>Remove Offer</h1>
+{% if object.list_type == 'O' %}
+  Remove from Offer List
+{% else %}
+  Remove Wish List Item
+{% endif %}
 
-  <h4>Are you sure you want to remove {{ object.title }} from your offer list?</h4>
+  <h4>Are you sure you want to remove {{ object.title }}?</h4>
 
   <form action="" method="POST">
     {% csrf_token %}
     <input type="submit" value="Remove">
-    <a href="{% url 'offer_details' offer.id %}">Cancel</a>
+    {% if object.list_type == 'O' %}
+      <a href="{% url 'offer_details' offer.id %}">Cancel</a>
+    {% else %}
+      <a href="{% url 'profile' %}">Cancel</a>
+    {% endif %}
   </form>
 {% endblock %}

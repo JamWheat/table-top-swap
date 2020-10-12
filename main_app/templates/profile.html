@@ -34,7 +34,7 @@
     {% for wish in wishes %}
       <li>
         {{ wish.title }} ({{ wish.year_published }})<br>
-        {{ wish.comment }}
+        {{ wish.comment }} <a href="{% url 'offer_delete' wish.id %}">Remove</a></li>
       </li>
     {% endfor %}
   </ul>

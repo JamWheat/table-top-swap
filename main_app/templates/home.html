@@ -14,8 +14,13 @@
   <input type="submit" value="Search">
 </form>
 
-{% if results %}
-  {{ results }}
+{% if offers %}
+  {% for offer in offers %}
+    <ul>
+      <li>{{ offer.title }} ({{ offer.year_published}})</li>
+      <li>{{ offer.user.id }}
+    </ul>
+  {% endfor %}
 {% endif %}
 
 {% endblock %}
