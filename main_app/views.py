@@ -130,6 +130,13 @@ def user_page(request, user_id):
 def message_create(request):
   message_form = MessageForm(initial={ 
     'sender': request.user.id,
-    'reciever': request.POST['receiver']
+    'receiver': request.POST['receiver']
   })
   return render(request, 'messages/create_message.html', { 'message_form': message_form })
+
+def message_send(request):
+  form = MessageForm(request.POST)
+  if form.is_valid():
+    new_message = form.save(commit=False)
+    new_message.save()
+  return redirect('/users/profile/')

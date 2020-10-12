@@ -23,4 +23,5 @@ urlpatterns = [
   path('users/<int:user_id>/', views.user_page, name='user_page'),
   # messages views/actions
   path('messages/create', views.message_create, name='message_create'),
+  path('messages/send', views.message_send, name='message_send')
 ]

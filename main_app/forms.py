@@ -32,7 +32,7 @@ class MessageForm(ModelForm):
   class Meta:
     model = Message
     fields = '__all__'
-    widgets = {
-      'sender': forms.HiddenInput(),
-      'receiver': forms.HiddenInput(),
-    }
+    # widgets = {
+    #   'sender': forms.HiddenInput(),
+    #   'receiver': forms.HiddenInput(),
+    # }

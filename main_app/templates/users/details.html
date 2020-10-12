@@ -16,7 +16,7 @@
   {% comment %} <a href="{% url 'message_create' user_focus.id %}">Send {{ user_focus }} a message</a> {% endcomment %}
   <form action="{% url 'message_create' %}" method="POST">
     {% csrf_token %}
-    <input type="hidden" name="receiver" value="{{ user_focus_id }}">
+    <input type="hidden" name="receiver" value="{{ user_focus.id }}">
     <input type="submit" value="Send {{ user_focus }} a message">
   </form>
 {% endif %}
