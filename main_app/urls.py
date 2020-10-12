@@ -19,5 +19,6 @@ urlpatterns = [
   path('offers/<int:pk>/delete/', views.OfferDelete.as_view(), name='offer_delete'),
   path('offer/search/', views.offer_search, name="offer_search"),
   # user views
-  path('users/profile/', views.profile, name='profile')
+  path('users/profile/', views.profile, name='profile'),
+  path('users/<int:user_id>/', views.user_page, name='user_page'),
 ]

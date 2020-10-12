@@ -4,6 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from .games_search import search, find
 from .forms import OfferForm, UserForm, ProfileForm
 from .models import Offer
@@ -113,4 +114,12 @@ def profile(request):
   wishes = Offer.objects.filter(user=request.user, list_type='W')
   user = request.user
   return render(request, 'profile.html', { 'offers': offers, 'wishes': wishes, 'user': user})
+
+def user_page(request, user_id):
+  user_focus = User.objects.get(id=user_id)
+  user_offers = Offer.objects.filter(user=user_id)
+  return render(request, 'users/details.html', {
+    'user_focus': user_focus,
+    'user_offers': user_offers
+  })
 

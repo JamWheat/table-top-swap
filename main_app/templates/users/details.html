@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}User Details{% endblock %}
+
+{% block content %}
+
+<h1>User Details</h1>
+
+{{ user_offers }}
+
+{% comment %} {% if user.profile.icon %}
+  <img src="{{ user.profile.icon }}"><br>
+{% else %}
+  <img src="https://i.imgur.com/2fs59Xy.png"><br>
+{% endif %} {% endcomment %}
+
+<h3>Offer List</h3>
+
+{% comment %} {% if offers %}
+  {% for offer in offers %}
+    <a href="{% url 'offer_details' offer.id %}">
+      <img src="{{ offer.thumbnail }}">
+      <p>{{ offer.title }} ({{ offer.year_published }})</p>
+    </a>
+  {% endfor %}
+{% else %}
+  <p>You do not have any games on your Offer List right now.</p>
+{% endif %} {% endcomment %}
+
+<h3>Wish List</h3>
+
+{% comment %} {% if wishes %}
+  <ul>
+    {% for wish in wishes %}
+      <li>
+        {{ wish.title }} ({{ wish.year_published }})<br>
+        {{ wish.comment }} <a href="{% url 'offer_delete' wish.id %}">Remove</a></li>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>You do not have any games on your Wish List right now.</p>
+{% endif %} {% endcomment %}
+
+
+{% endblock %}

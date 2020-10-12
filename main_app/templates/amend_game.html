@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %}Add Game to Offer List{% endblock %}
+{% block title %}Add Game{% endblock %}
 
 {% block content %}
 
-<h1>Add {{ result.title }} ({{ result.year_published }}) to Offer List</h1>
+<h1>Add {{ result.title }} ({{ result.year_published }})</h1>
 
 <img src="{{ result.thumbnail }}">
 
 <form action="{% url 'add_offer' %}" method="post">
   {% csrf_token %}
   {{ offer_form.as_p }}
-  <input type='submit' value='Add Game to Offer List'>
+  <input type='submit' value='Add Game'>
 </form>
 
 {% endblock %}
