@@ -13,7 +13,7 @@
 <body>
   <nav>
     <div class="nav-bar">
-      <a href="{% url 'home' %}">TableTopSwap</a>
+      <span class="nav-title"><a href="{% url 'home' %}">TableTopSwap</a></span>
       <div class="right-nav">
         <a href="{% url 'about' %}">About</a>
         {% if user.is_authenticated %}
@@ -32,7 +32,7 @@
     {% endblock %}
   </main>
   <footer>
-    <div>All Rights Reserved, &copy; 2020 TableTopSwap &nbsp;</div>
+    <div>All Rights Reserved, &copy; 2020 TableTopSwap</div>
   </footer>
 </body>
 </html>

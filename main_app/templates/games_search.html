@@ -6,27 +6,29 @@
 
 <h1>Find a Game to Offer</h1>
 
-<form action="{% url 'bgg_search' %}" method="POST">
-  {% csrf_token %}
-  <input type='text' name="query" placeholder="Search for a game...">
-  <input type="submit" value="Search">
-</form>
-
-<br><br>
+<div class="home-search">
+  <form action="{% url 'bgg_search' %}" method="POST">
+    {% csrf_token %}
+    <input type='text' name="query" placeholder="Search for a game...">
+    <input type="submit" value="Search">
+  </form>
+</div>
+<br>
 
 {% if results %}
-  {% comment %} {{ results }} {% endcomment %}
   {% for game in results %}
-    <p>{{ game.1 }} ({{ game.2 }})</p>
-    <form action="{% url 'bgg_find' %}" method="POST">
-      {% csrf_token %}
-      <input type="hidden" name="objectid" value="{{ game.0 }}">
-      <input type="hidden" name="title" value="{{ game.1 }}">
-      <input type="submit" value="Select Game">
-    </form>
+    <div class="search-card">
+      <p>{{ game.1 }} ({{ game.2 }})</p>
+      <div class="search-right">
+        <form action="{% url 'bgg_find' %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="objectid" value="{{ game.0 }}">
+          <input type="hidden" name="title" value="{{ game.1 }}">
+          <input type="submit" value="Select Game">
+        </form>
+      </div>
+    </div>
   {% endfor %}
 {% endif %}
-
-<br><br>
 
 {% endblock %}

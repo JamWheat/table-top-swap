@@ -6,21 +6,24 @@
 
 <h1>Welcome to TableTopSwap</h1>
 
-<h3>Search Offers</h3>
-
-<form action="{% url 'offer_search' %}" method="POST">
-  {% csrf_token %}
-  <input type='text' name="query" placeholder="Search for an offer...">
-  <input type="submit" value="Search">
-</form>
-
+<div class="home-search">
+  <form action="{% url 'offer_search' %}" method="POST">
+    {% csrf_token %}
+    <input type='text' name="query" placeholder="Search for an offer...">
+    <input type="submit" value="Search" class="input-btn">
+  </form>
+</div>
+<br>
 {% if offers %}
   {% for offer in offers %}
     <a href="{% url 'user_page' offer.user.id %}">
-      <ul>
-        <li>{{ offer.title }} ({{ offer.year_published}})</li>
-        <li>Offered by {{ offer.user }}
-      </ul>
+      <div class="home-card">
+        <img src="{{ offer.thumbnail }}" height="100">
+        <div class="home-card-blurb">
+          {{ offer.title }} ({{ offer.year_published}})
+          <p>Offered by {{ offer.user }}<p>
+        <div>
+      </div>
     </a>
   {% endfor %}
 {% endif %}

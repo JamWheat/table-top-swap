@@ -3,14 +3,16 @@ html {
   --text: #042A2B; 
   --color2: #EF7B45;
   --color3: #D84727;
-  --color4: #5EB1BF;
+  --color4: #88c8d3;
   --bg: #CDEDF6;
+  --nav-text: #e2f2f7;
 }
 
 body {
   background-color: #a8aeb8;
   font-family: 'PT Sans', sans-serif;
   margin: 0;
+  font-size: 1.1rem;
   height: 100vh;
   display: grid;
   grid-template-rows: 75px 1fr 50px;
@@ -21,7 +23,35 @@ body {
   ;
   color: var(--text);
   background-color: var(--bg);
-  
+}
+
+input {
+  border: 0px;
+  padding: 4px 8px;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.input-btn:hover{
+  cursor: pointer;
+}
+
+button {
+  border: 0px;
+  padding: 4px 8px;
+  font-family: 'PT Sans', sans-serif;
+  border-radius: 5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Slab', serif;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: bold;
 }
 
 nav {
@@ -31,16 +61,29 @@ nav {
 }
 
 .nav-bar {
-  margin: 0 15px;
+  margin: 13px 15px;
   display: flex;
+  font-weight: bold;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
+.nav-bar a {
+  color: var(--nav-text);
+}
+
+.nav-title {
+  font-size: 2.2rem;
+}
+
 .right-nav{
-  font-weight: bold;
   margin-right: 0;
+  font-size: 1.5rem;
+}
+
+.right-nav a{
+  margin: 0 5px;
 }
 
 main {
@@ -52,10 +95,56 @@ main {
 
 footer {
   font-family: 'Roboto Slab', serif;
+  font-weight: bold;
   display: flex;
   grid-area: footer;
   justify-content: center;
   align-items: center;
   color: var(--bg);
   background-color: var(--color2);
+}
+
+.home-search {
+  background-color: var(--color4);
+  border-radius: 10px;
+  padding: 15px
+}
+
+.home-card {
+  width: 400px;
+  display: flex;
+  background-color: var(--color4);
+  border-radius: 10px;
+  padding: 15px
+}
+
+.home-card-blurb{
+  padding: 0 0 0 10px;
+}
+
+.search-card{
+  margin: 7px;
+  display: flex;
+  height: 50px;
+  width: 600px;
+  align-items: center;
+  background-color: var(--color4);
+  border-radius: 10px;
+  padding: 15px;
+  justify-content: space-between;
+}
+
+.search-right{
+  margin-right: 0;
+}
+
+.ammend-card{
+  display: flex;
+  padding: 15px;
+  background-color: var(--color4);
+  border-radius: 10px;
+}
+
+.ammend-card-blurb{
+  padding: 0 0 0 10px;
 }

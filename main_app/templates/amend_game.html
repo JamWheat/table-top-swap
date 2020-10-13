@@ -4,14 +4,17 @@
 
 {% block content %}
 
-<h1>Add {{ result.title }} ({{ result.year_published }})</h1>
+<h1>{{ result.title }} ({{ result.year_published }})</h1>
 
-<img src="{{ result.thumbnail }}">
-
-<form action="{% url 'add_offer' %}" method="post">
-  {% csrf_token %}
-  {{ offer_form.as_p }}
-  <input type='submit' value='Add Game'>
-</form>
+<div class="ammend-card">
+  <img src="{{ result.image }}" width="300">
+  <div class="ammend-card-blurb">
+    <form action="{% url 'add_offer' %}" method="post">
+      {% csrf_token %}
+      {{ offer_form.as_p }}
+      <input type='submit' value='Add Game'>
+    </form>
+  </div>
+</div>
 
 {% endblock %}
