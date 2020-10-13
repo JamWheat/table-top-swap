@@ -6,64 +6,101 @@
 
 <h1>View Message</h1>
 
-<h3>Sent Mesages</h3>
-
-{% if sent_messages %}
-  {% for message in sent_messages %}
-    <div>
-      <p>Sent to: {{ message.receiver }}</p>
-      <p>Message: {{ message.message }}</p>
-      <a href="{% url 'message_update' message.id %}">Edit</a>
-      <a href="{% url 'message_delete' message.id %}">Delete</a>
-    </div><br>
-    {% for reply in message.reply_set.all %}
-      <p>Replier: {{ reply.sender }}</p>
-      <p>Reply: {{ reply.reply }}</p>
-      {% if reply.sender.id == user.id %}
-        <a href="{% url 'reply_update' reply.id %}">Edit</a>
-        <a href="{% url 'reply_delete' reply.id %}">Delete</a>
-      {% endif %}
-    {% endfor %}
-    {% comment %} <form action="{% url 'reply_new' %}" method="POST">
-      {% csrf_token %}
-      <input type="hidden" name="message" value="{{ message.id }}">
-      <input type='submit' value='Add Reply'>
-    </form> {% endcomment %}
-    <form action="{% url 'reply_create' %}" method="POST">
-      {% csrf_token %}
-      <input type='text' name="reply">
-      <input type="hidden" name="sender" value="{{ user.id }}">
-      <input type="hidden" name="message" value="{{ message.id }}">
-      <input type='submit' value='Add Reply'>
-    </form>
-    
-  {% endfor %}
-{% else %}
-  <p>You have no sent messages at the moment.</p>
-{% endif %}
-
-<h3>Received Mesages</h3>
-
-{% if received_messages %}
-  {% for message in received_messages %}
-    <div>
-      <p>Received from: {{ message.sender }}</p>
-      <p>Message: {{ message.message }}</p>
-    </div><br>
-     {% for reply in message.reply_set.all %}
-      <p>Replier: {{ reply.sender }}</p>
-      <p>Reply: {{ reply.reply }}</p>
-    {% endfor %}
-    <form action="{% url 'reply_create' %}" method="POST">
-      {% csrf_token %}
-      <input type='text' name="reply">
-      <input type="hidden" name="sender" value="{{ user.id }}">
-      <input type="hidden" name="message" value="{{ message.id }}">
-      <input type='submit' value='Add Reply'>
-    </form>
-  {% endfor %}
-{% else %}
-  <p>You have no received messages at the moment.</p>
-{% endif %}
-
+<div class="messages-container">
+  <div class="message-column">
+    <h3>Sent Mesages</h3>
+    {% if sent_messages %}
+      {% for message in sent_messages %}
+        <div class="message-card">
+          <div>
+            <div class="message-header">
+              <img src="{{ message.sender.profile.icon }}" class="message-icon">
+              <p>&nbsp;&nbsp;{{ message.sender }}</p>
+            </div>
+            <div class="message-body">
+              <p>{{ message.message }}</p>
+            </div>
+            <div class="message-actions">
+              <a href="{% url 'message_update' message.id %}">Edit</a>
+              <a href="{% url 'message_delete' message.id %}">Delete</a>
+            </div>
+          </div>
+          {% for reply in message.reply_set.all %}
+            <div class="message-header">
+              <img src="{{ reply.sender.profile.icon }}" class="message-icon">
+              <p>&nbsp;&nbsp;{{ reply.sender }}</p>
+            </div>
+            <div class="message-body">
+              <p>{{ reply.reply }}</p>
+            </div>
+            {% if reply.sender.id == user.id %}
+            <div class="message-actions">
+              <a href="{% url 'reply_update' reply.id %}">Edit</a>
+              <a href="{% url 'reply_delete' reply.id %}">Delete</a>
+            </div>
+            {% endif %}
+          {% endfor %}
+          {% comment %} <form action="{% url 'reply_new' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="message" value="{{ message.id }}">
+            <input type='submit' value='Add Reply'>
+          </form> {% endcomment %}
+          <br>
+          <form action="{% url 'reply_create' %}" method="POST">
+            {% csrf_token %}
+            <input type='text' name="reply">
+            <input type="hidden" name="sender" value="{{ user.id }}">
+            <input type="hidden" name="message" value="{{ message.id }}">
+            <input type='submit' value='Add Reply'>
+          </form>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>You have no sent messages at the moment.</p>
+    {% endif %}
+  </div>
+  <div class="message-column">
+    <h3>Received Mesages</h3>
+    {% if received_messages %}
+      {% for message in received_messages %}
+        <div class="message-card">
+          <div>
+            <div class="message-header">
+              <img src="{{ message.sender.profile.icon }}" class="message-icon">
+              <p>&nbsp;&nbsp;{{ message.sender }}</p>
+            </div>
+            <div class="message-body">
+              <p>{{ message.message }}</p>
+            </div>
+          </div>
+          {% for reply in message.reply_set.all %}
+            <div class="message-header">
+              <img src="{{ reply.sender.profile.icon }}" class="message-icon">
+              <p>&nbsp;&nbsp;{{ reply.sender }}</p>
+            </div>
+            <div class="message-body">
+              <p>{{ reply.reply }}</p>
+            </div>
+            {% if reply.sender.id == user.id %}
+            <div class="message-actions">
+              <a href="{% url 'reply_update' reply.id %}">Edit</a>
+              <a href="{% url 'reply_delete' reply.id %}">Delete</a>
+            </div>
+            {% endif %}
+          {% endfor %}
+          <br>
+          <form action="{% url 'reply_create' %}" method="POST">
+            {% csrf_token %}
+            <input type='text' name="reply">
+            <input type="hidden" name="sender" value="{{ user.id }}">
+            <input type="hidden" name="message" value="{{ message.id }}">
+            <input type='submit' value='Add Reply'>
+          </form>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>You have no received messages at the moment.</p>
+    {% endif %}
+  </div>
+</div>
 {% endblock %}
