@@ -19,10 +19,10 @@
     <a href="{% url 'user_page' offer.user.id %}">
       <div class="home-card">
         <img src="{{ offer.thumbnail }}" height="100">
-        <div class="home-card-blurb">
+        <div class="card-blurb">
           {{ offer.title }} ({{ offer.year_published}})
           <p>Offered by {{ offer.user }}<p>
-        <div>
+        </div>
       </div>
     </a>
   {% endfor %}

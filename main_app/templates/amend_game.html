@@ -8,7 +8,7 @@
 
 <div class="ammend-card">
   <img src="{{ result.image }}" width="300">
-  <div class="ammend-card-blurb">
+  <div class="card-blurb">
     <form action="{% url 'add_offer' %}" method="post">
       {% csrf_token %}
       {{ offer_form.as_p }}

@@ -100,7 +100,7 @@ footer {
   grid-area: footer;
   justify-content: center;
   align-items: center;
-  color: var(--bg);
+  color: var(--nav-text);
   background-color: var(--color2);
 }
 
@@ -118,8 +118,14 @@ footer {
   padding: 15px
 }
 
-.home-card-blurb{
+.card-blurb{
   padding: 0 0 0 10px;
+}
+
+.blurb-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .search-card{
@@ -145,6 +151,44 @@ footer {
   border-radius: 10px;
 }
 
-.ammend-card-blurb{
-  padding: 0 0 0 10px;
+.profile-header{
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+  background-color: var(--color4);
+  border-radius: 10px;
 }
+
+.profile-icon{
+  border-radius: 100%;
+  height: 125px;
+  width: 125px;
+}
+
+.profile-columns{
+  display: flex;
+}
+
+.offer-card{
+  margin: 5px;
+  display: flex;
+  padding: 15px;
+  background-color: var(--color4);
+  border-radius: 10px;
+}
+
+.wish-list{
+  width: 300px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background-color: var(--color4);
+  border-radius: 10px;
+}
+
+hr {
+  border: 2px solid var(--text);
+  border-radius: 3px;
+}
+
