@@ -9,8 +9,6 @@ from .games_search import search, find
 from .forms import OfferForm, UserForm, ProfileForm, MessageForm, ReplyForm
 from .models import Offer, Message, Reply
 
-
-# to protect view functions: decorate with @login_required
 # to protect view classes: put LoginRequiredMixin, into the class inheritance
 
 # accounts
@@ -29,6 +27,7 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
+@login_required
 def update_profile(request):
   if request.method == 'POST':
     user_form = UserForm(request.POST, instance=request.user)
@@ -67,6 +66,7 @@ def bgg_search(request):
   results = search(request.POST['query'])
   return render(request, 'games_search.html', { 'results': results })
 
+@login_required
 def bgg_find(request):
   result = find(request.POST['objectid'])
   result['title'] = request.POST['title']
@@ -80,6 +80,7 @@ def bgg_find(request):
    })
   return render(request, 'amend_game.html', {'result': result, 'offer_form': offer_form })
 
+@login_required
 def add_offer(request):
   form = OfferForm(request.POST)
   if form.is_valid():
@@ -90,15 +91,16 @@ def add_offer(request):
 
 # offer views/actions
 
+@login_required
 def offer_details(request, offer_id):
   offer = Offer.objects.get(id=offer_id)
   return render(request, 'offers/details.html', { 'offer': offer })
 
-class OfferUpdate(UpdateView):
+class OfferUpdate(LoginRequiredMixin, UpdateView):
   model = Offer
   fields = ['condition', 'comment']
 
-class OfferDelete(DeleteView):
+class OfferDelete(LoginRequiredMixin, DeleteView):
   model = Offer
   success_url = '/users/profile/'
 
@@ -109,6 +111,7 @@ def offer_search(request):
 
 # user views/actions
 
+@login_required
 def profile(request):
   offers = Offer.objects.filter(user=request.user, list_type='O')
   wishes = Offer.objects.filter(user=request.user, list_type='W')
@@ -127,6 +130,7 @@ def user_page(request, user_id):
 
 # messages views and actions
 
+@login_required
 def message_create(request):
   message_form = MessageForm(initial={ 
     'sender': request.user.id,
@@ -134,6 +138,7 @@ def message_create(request):
   })
   return render(request, 'messages/create_message.html', { 'message_form': message_form })
 
+@login_required
 def message_send(request):
   form = MessageForm(request.POST)
   if form.is_valid():
@@ -141,6 +146,7 @@ def message_send(request):
     new_message.save()
   return redirect('/users/profile/')
 
+@login_required
 def messages_view(request):
   sent_messages = Message.objects.filter(sender=request.user)
   received_messages = Message.objects.filter(receiver=request.user)
@@ -149,11 +155,11 @@ def messages_view(request):
     'received_messages': received_messages
   })
 
-class MessageUpdate(UpdateView):
+class MessageUpdate(LoginRequiredMixin, UpdateView):
   model = Message
   fields = ['message']
 
-class MessageDelete(DeleteView):
+class MessageDelete(LoginRequiredMixin, DeleteView):
   model = Message
   success_url = '/messages/view/'
 
@@ -170,6 +176,7 @@ class MessageDelete(DeleteView):
 #     'message': message
 #   })
 
+@login_required
 def reply_create(request):
   form = ReplyForm(request.POST)
   if form.is_valid():
@@ -177,10 +184,10 @@ def reply_create(request):
     new_message.save()
   return redirect('/messages/view/')
 
-class ReplyUpdate(UpdateView):
+class ReplyUpdate(LoginRequiredMixin, UpdateView):
   model = Reply
   fields = ['reply']
 
-class ReplyDelete(DeleteView):
+class ReplyDelete(LoginRequiredMixin, DeleteView):
   model = Reply
   success_url = '/messages/view/'
