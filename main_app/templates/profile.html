@@ -13,8 +13,8 @@
     <img src="https://i.imgur.com/2fs59Xy.png" class="profile-icon"><br>
   {% endif %}
   <div class="card-blurb blurb-center">
-    <a href="{% url 'messages_view' %}">View Messages</a><br>
-    <a href="{% url 'update_profile' %}">Update your profile</a>
+    <a href="{% url 'messages_view' %}" class="button">View Messages</a><br>
+    <a href="{% url 'update_profile' %}" class="button">Update your profile</a>
   </div>
 </div>
 
@@ -45,7 +45,7 @@
         {% for wish in wishes %}
           <div>
             {{ wish.title }} ({{ wish.year_published }})<br>
-            {{ wish.comment }} <a href="{% url 'offer_delete' wish.id %}">Remove</a>
+            {{ wish.comment }} <a href="{% url 'offer_delete' wish.id %}" class="button">Remove</a>
             <hr>
           </div>
         {% endfor %}

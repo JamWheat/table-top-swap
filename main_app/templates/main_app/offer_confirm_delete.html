@@ -19,11 +19,11 @@
 
   <form action="" method="POST">
     {% csrf_token %}
-    <input type="submit" value="Remove">
+    <input type="submit" value="Remove" class="button">
     {% if object.list_type == 'O' %}
-      <a href="{% url 'offer_details' offer.id %}">Cancel</a>
+      <a href="{% url 'offer_details' offer.id %}" class="button">Cancel</a>
     {% else %}
-      <a href="{% url 'profile' %}">Cancel</a>
+      <a href="{% url 'profile' %}" class="button">Cancel</a>
     {% endif %}
   </form>
 {% endblock %}

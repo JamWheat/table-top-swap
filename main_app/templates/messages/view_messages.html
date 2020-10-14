@@ -21,8 +21,8 @@
               <p>{{ message.message }}</p>
             </div>
             <div class="message-actions">
-              <a href="{% url 'message_update' message.id %}">Edit</a>
-              <a href="{% url 'message_delete' message.id %}">Delete</a>
+              <a href="{% url 'message_update' message.id %}" class="button">Edit</a>
+              <a href="{% url 'message_delete' message.id %}" class="button">Delete</a>
             </div>
           </div>
           {% for reply in message.reply_set.all %}
@@ -35,8 +35,8 @@
             </div>
             {% if reply.sender.id == user.id %}
             <div class="message-actions">
-              <a href="{% url 'reply_update' reply.id %}">Edit</a>
-              <a href="{% url 'reply_delete' reply.id %}">Delete</a>
+              <a href="{% url 'reply_update' reply.id %}" class="button">Edit</a>
+              <a href="{% url 'reply_delete' reply.id %}" class="button">Delete</a>
             </div>
             {% endif %}
           {% endfor %}
@@ -51,7 +51,7 @@
             <input type='text' name="reply">
             <input type="hidden" name="sender" value="{{ user.id }}">
             <input type="hidden" name="message" value="{{ message.id }}">
-            <input type='submit' value='Add Reply'>
+            <input type='submit' value='Add Reply' class="button">
           </form>
         </div>
       {% endfor %}
@@ -83,8 +83,8 @@
             </div>
             {% if reply.sender.id == user.id %}
             <div class="message-actions">
-              <a href="{% url 'reply_update' reply.id %}">Edit</a>
-              <a href="{% url 'reply_delete' reply.id %}">Delete</a>
+              <a href="{% url 'reply_update' reply.id %}" class="button">Edit</a>
+              <a href="{% url 'reply_delete' reply.id %}" class="button">Delete</a>
             </div>
             {% endif %}
           {% endfor %}
@@ -94,7 +94,7 @@
             <input type='text' name="reply">
             <input type="hidden" name="sender" value="{{ user.id }}">
             <input type="hidden" name="message" value="{{ message.id }}">
-            <input type='submit' value='Add Reply'>
+            <input type='submit' value='Add Reply' class="button">
           </form>
         </div>
       {% endfor %}

@@ -12,8 +12,8 @@
 <p>Comments: {{ offer.comment }}</p>
 
 {% if offer.user.id == user.id %}
-  <a href="{% url 'offer_update' offer.id %}">Edit</a>
-  <a href="{% url 'offer_delete' offer.id %}">Delete</a>
+  <a href="{% url 'offer_update' offer.id %}" class="button">Edit</a>
+  <a href="{% url 'offer_delete' offer.id %}" class="button">Delete</a>
 {% endif %}
 
 {% endblock %}

@@ -44,6 +44,17 @@ button {
   border-radius: 5px;
 }
 
+.button {
+  font-family: 'Roboto Slab', serif;
+  font-weight: bold;
+  background-color: var(--color2);
+  color: var(--nav-text);
+  border: 0px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  margin: 0 3px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto Slab', serif;
 }
