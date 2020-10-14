@@ -31,5 +31,6 @@ urlpatterns = [
   # path('reply/new', views.reply_new, name='reply_new'),
   path('reply/create', views.reply_create, name='reply_create'),
   path('reply/<int:pk>/update/', views.ReplyUpdate.as_view(), name='reply_update'),
-  path('reply/<int:pk>/delete/', views.ReplyDelete.as_view(), name='reply_delete'),
+  # path('reply/<int:pk>/delete/', views.ReplyDelete.as_view(), name='reply_delete'),
+  path('reply/<int:reply_id>/delete/', views.reply_delete, name='reply_delete'),
 ]

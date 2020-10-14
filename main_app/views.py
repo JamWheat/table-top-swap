@@ -188,6 +188,11 @@ class ReplyUpdate(LoginRequiredMixin, UpdateView):
   model = Reply
   fields = ['reply']
 
-class ReplyDelete(LoginRequiredMixin, DeleteView):
-  model = Reply
-  success_url = '/messages/view/'
+# class ReplyDelete(LoginRequiredMixin, DeleteView):
+#   model = Reply
+#   success_url = '/messages/view/'
+
+@login_required
+def reply_delete(request, reply_id):
+  Reply.objects.get(id=reply_id).delete()
+  return redirect('/messages/view/')
