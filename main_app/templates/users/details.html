@@ -10,14 +10,14 @@
   {% if user_focus.profile.icon %}
     <img src="{{ user_focus.profile.icon }}" class="profile-icon"><br>
   {% else %}
-    <img src="https://i.imgur.com/2fs59Xy.png" class="profile-icon"><br>
+    <img src="https://i.imgur.com/zTpOPgB.png" class="profile-icon"><br>
   {% endif %}
   <div class="card-blurb blurb-center">
     {% if user_focus.id != user.id %}
       <form action="{% url 'message_create' %}" method="POST">
         {% csrf_token %}
         <input type="hidden" name="receiver" value="{{ user_focus.id }}">
-        <input type="submit" value="Send {{ user_focus }} a message">
+        <input type="submit" value="Send {{ user_focus }} a message" class="button">
       </form>
     {% endif %}
   </div>
@@ -29,9 +29,11 @@
       {% if user_offers %}
         {% for offer in user_offers %}
           <div class="offer-card">
-            <img src="{{ offer.thumbnail }}">
+            <img src="{{ offer.thumbnail }}" height="100%">
             <div class="card-blurb blurb-center">
-              <p>{{ offer.title }} ({{ offer.year_published }})</p>
+              <p><i>{{ offer.title }} ({{ offer.year_published }})</i></p>
+              <p><b>Condition:</b> {{ offer.get_condition_display }}</p>
+              <p><b>Comments:</b> {{ offer.comment }}</p>
             </div>
           </div>
         {% endfor %}
@@ -45,7 +47,7 @@
       <div class="wish-list">
         {% for wish in user_wishes %}
           <div>
-            {{ wish.title }} ({{ wish.year_published }})<br>
+            <i>{{ wish.title }} ({{ wish.year_published }})</i><br>
             {{ wish.comment }}
             <hr>
           </div>

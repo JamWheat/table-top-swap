@@ -14,7 +14,12 @@
         <div class="message-card">
           <div>
             <div class="message-header">
-              <img src="{{ message.sender.profile.icon }}" class="message-icon">
+              {% if message.sender.profile.icon %}
+                <img src="{{ message.sender.profile.icon }}" class="message-icon"><br>
+              {% else %}
+                <img src="https://i.imgur.com/zTpOPgB.png" class="message-icon"><br>
+              {% endif %}
+              {% comment %} <img src="{{ message.sender.profile.icon }}" class="message-icon"> {% endcomment %}
               <p>&nbsp;&nbsp;{{ message.sender }}</p>
             </div>
             <div class="message-body">
@@ -66,7 +71,12 @@
         <div class="message-card">
           <div>
             <div class="message-header">
-              <img src="{{ message.sender.profile.icon }}" class="message-icon">
+              {% if message.sender.profile.icon %}
+                <img src="{{ message.sender.profile.icon }}" class="message-icon"><br>
+              {% else %}
+                <img src="https://i.imgur.com/zTpOPgB.png" class="message-icon"><br>
+              {% endif %}
+              {% comment %} <img src="{{ message.sender.profile.icon }}" class="message-icon"> {% endcomment %}
               <p>&nbsp;&nbsp;{{ message.sender }}</p>
             </div>
             <div class="message-body">

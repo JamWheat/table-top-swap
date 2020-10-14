@@ -13,19 +13,38 @@
     <input type="submit" value="Search" class="button">
   </form>
 </div>
-<br>
+
 {% if offers %}
-  {% for offer in offers %}
-    <a href="{% url 'user_page' offer.user.id %}">
-      <div class="home-card">
-        <img src="{{ offer.thumbnail }}" height="100">
-        <div class="card-blurb">
-          {{ offer.title }} ({{ offer.year_published}})
-          <p>Offered by {{ offer.user }}<p>
+  <h3>Serch Results</h3>
+  <div class="home-container">
+    {% for offer in offers %}
+      <a href="{% url 'user_page' offer.user.id %}">
+        <div class="home-card">
+          <img src="{{ offer.thumbnail }}" height="100">
+          <div class="card-blurb">
+            {{ offer.title }} ({{ offer.year_published}})
+            <p>Offered by {{ offer.user }}<p>
+          </div>
         </div>
-      </div>
-    </a>
-  {% endfor %}
+      </a>
+    {% endfor %}
+  <div>
+{% else %}
+  <h3>Recent Offers</h3>
+  <div class="home-container">
+    {% for offer in recent %}
+      <a href="{% url 'user_page' offer.user.id %}">
+        <div class="home-card">
+          <img src="{{ offer.thumbnail }}" height="100">
+          <div class="card-blurb">
+            {{ offer.title }} ({{ offer.year_published}})
+            <p>Offered by {{ offer.user }}<p>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
 {% endif %}
+
 
 {% endblock %}

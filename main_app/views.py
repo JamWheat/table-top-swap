@@ -50,7 +50,8 @@ def update_profile(request):
 # home page
 
 def home(request):
-  return render(request, 'home.html')
+  recent = Offer.objects.order_by('-id')[:10]
+  return render(request, 'home.html', {'recent': recent})
 
 # about page
 
