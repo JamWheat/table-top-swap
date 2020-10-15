@@ -307,3 +307,11 @@ hr {
 .narrow{
   width: 600px;
 }
+
+.reply-bump{
+  margin: 0px 0px 0px 20px;
+}
+
+.reply-width{
+  width: 300px;
+}

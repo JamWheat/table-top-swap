@@ -31,17 +31,19 @@
             </div>
           </div>
           {% for reply in message.reply_set.all %}
-            <div class="message-header">
-              <img src="{{ reply.sender.profile.icon }}" class="message-icon">
-              <p>&nbsp;&nbsp;{{ reply.sender }}</p>
-            </div>
-            <div class="message-body">
-              <p>{{ reply.reply }}</p>
-            </div>
-            {% if reply.sender.id == user.id %}
-            <div class="message-actions">
-              <a href="{% url 'reply_update' reply.id %}" class="button">Edit</a>
-              <a href="{% url 'reply_delete' reply.id %}" class="button">Delete</a>
+            <div class="reply-bump">
+              <div class="message-header">
+                <img src="{{ reply.sender.profile.icon }}" class="message-icon">
+                <p>&nbsp;&nbsp;{{ reply.sender }}</p>
+              </div>
+              <div class="message-body reply-width">
+                <p>{{ reply.reply }}</p>
+              </div>
+              {% if reply.sender.id == user.id %}
+              <div class="message-actions">
+                <a href="{% url 'reply_update' reply.id %}" class="button">Edit</a>
+                <a href="{% url 'reply_delete' reply.id %}" class="button">Delete</a>
+              </div>
             </div>
             {% endif %}
           {% endfor %}
@@ -84,17 +86,19 @@
             </div>
           </div>
           {% for reply in message.reply_set.all %}
-            <div class="message-header">
-              <img src="{{ reply.sender.profile.icon }}" class="message-icon">
-              <p>&nbsp;&nbsp;{{ reply.sender }}</p>
-            </div>
-            <div class="message-body">
-              <p>{{ reply.reply }}</p>
-            </div>
-            {% if reply.sender.id == user.id %}
-            <div class="message-actions">
-              <a href="{% url 'reply_update' reply.id %}" class="button">Edit</a>
-              <a href="{% url 'reply_delete' reply.id %}" class="button">Delete</a>
+            <div class="reply-bump">
+              <div class="message-header">
+                <img src="{{ reply.sender.profile.icon }}" class="message-icon">
+                <p>&nbsp;&nbsp;{{ reply.sender }}</p>
+              </div>
+              <div class="message-body reply-width">
+                <p>{{ reply.reply }}</p>
+              </div>
+              {% if reply.sender.id == user.id %}
+              <div class="message-actions">
+                <a href="{% url 'reply_update' reply.id %}" class="button">Edit</a>
+                <a href="{% url 'reply_delete' reply.id %}" class="button">Delete</a>
+              </div>
             </div>
             {% endif %}
           {% endfor %}
