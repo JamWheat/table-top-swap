@@ -19,7 +19,6 @@
               {% else %}
                 <img src="https://i.imgur.com/zTpOPgB.png" class="message-icon"><br>
               {% endif %}
-              {% comment %} <img src="{{ message.sender.profile.icon }}" class="message-icon"> {% endcomment %}
               <p>&nbsp;&nbsp;{{ message.sender }}</p>
             </div>
             <div class="message-body">
@@ -38,7 +37,6 @@
                 {% else %}
                   <img src="https://i.imgur.com/zTpOPgB.png" class="message-icon"><br>
                 {% endif %}
-                {% comment %} <img src="{{ reply.sender.profile.icon }}" class="message-icon"> {% endcomment %}
                 <p>&nbsp;&nbsp;{{ reply.sender }}</p>
               </div>
               <div class="message-body reply-width">
@@ -52,11 +50,6 @@
             </div>
             {% endif %}
           {% endfor %}
-          {% comment %} <form action="{% url 'reply_new' %}" method="POST">
-            {% csrf_token %}
-            <input type="hidden" name="message" value="{{ message.id }}">
-            <input type='submit' value='Add Reply'>
-          </form> {% endcomment %}
           <br>
           <form action="{% url 'reply_create' %}" method="POST">
             {% csrf_token %}
@@ -83,7 +76,6 @@
               {% else %}
                 <img src="https://i.imgur.com/zTpOPgB.png" class="message-icon"><br>
               {% endif %}
-              {% comment %} <img src="{{ message.sender.profile.icon }}" class="message-icon"> {% endcomment %}
               <p>&nbsp;&nbsp;{{ message.sender }}</p>
             </div>
             <div class="message-body">
@@ -98,7 +90,6 @@
                 {% else %}
                   <img src="https://i.imgur.com/zTpOPgB.png" class="message-icon"><br>
                 {% endif %}
-                {% comment %} <img src="{{ reply.sender.profile.icon }}" class="message-icon"> {% endcomment %}
                 <p>&nbsp;&nbsp;{{ reply.sender }}</p>
               </div>
               <div class="message-body reply-width">
