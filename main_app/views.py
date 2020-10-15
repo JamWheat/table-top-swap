@@ -145,7 +145,7 @@ def message_send(request):
   if form.is_valid():
     new_message = form.save(commit=False)
     new_message.save()
-  return redirect('/users/profile/')
+  return redirect('/messages/view/')
 
 @login_required
 def messages_view(request):

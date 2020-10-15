@@ -33,7 +33,12 @@
           {% for reply in message.reply_set.all %}
             <div class="reply-bump">
               <div class="message-header">
-                <img src="{{ reply.sender.profile.icon }}" class="message-icon">
+                {% if reply.sender.profile.icon %}
+                  <img src="{{ reply.sender.profile.icon }}" class="message-icon"><br>
+                {% else %}
+                  <img src="https://i.imgur.com/zTpOPgB.png" class="message-icon"><br>
+                {% endif %}
+                {% comment %} <img src="{{ reply.sender.profile.icon }}" class="message-icon"> {% endcomment %}
                 <p>&nbsp;&nbsp;{{ reply.sender }}</p>
               </div>
               <div class="message-body reply-width">
@@ -88,7 +93,12 @@
           {% for reply in message.reply_set.all %}
             <div class="reply-bump">
               <div class="message-header">
-                <img src="{{ reply.sender.profile.icon }}" class="message-icon">
+                {% if reply.sender.profile.icon %}
+                  <img src="{{ reply.sender.profile.icon }}" class="message-icon"><br>
+                {% else %}
+                  <img src="https://i.imgur.com/zTpOPgB.png" class="message-icon"><br>
+                {% endif %}
+                {% comment %} <img src="{{ reply.sender.profile.icon }}" class="message-icon"> {% endcomment %}
                 <p>&nbsp;&nbsp;{{ reply.sender }}</p>
               </div>
               <div class="message-body reply-width">
