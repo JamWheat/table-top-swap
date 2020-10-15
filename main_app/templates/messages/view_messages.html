@@ -47,8 +47,8 @@
                 <a href="{% url 'reply_update' reply.id %}" class="button">Edit</a>
                 <a href="{% url 'reply_delete' reply.id %}" class="button">Delete</a>
               </div>
+              {% endif %}
             </div>
-            {% endif %}
           {% endfor %}
           <br>
           <form action="{% url 'reply_create' %}" method="POST">
@@ -100,8 +100,8 @@
                 <a href="{% url 'reply_update' reply.id %}" class="button">Edit</a>
                 <a href="{% url 'reply_delete' reply.id %}" class="button">Delete</a>
               </div>
+              {% endif %}
             </div>
-            {% endif %}
           {% endfor %}
           <br>
           <form action="{% url 'reply_create' %}" method="POST">
