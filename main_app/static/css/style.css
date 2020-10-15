@@ -9,7 +9,11 @@ html {
 }
 
 body {
-  background-color: #a8aeb8;
+  /* background-color: #a8aeb8; */
+
+  background-color: #cdedf6;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='126' height='84' viewBox='0 0 126 84'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2394c9d8' fill-opacity='0.34'%3E%3Cpath d='M126 83v1H0v-2h40V42H0v-2h40V0h2v40h40V0h2v40h40V0h2v83zm-2-1V42H84v40h40zM82 42H42v40h40V42zm-50-6a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm96 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm-42 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm30-12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM20 54a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm12 24a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM8 54a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm24 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM8 78a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm12 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm54 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM50 54a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm24 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM50 78a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm54-12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm12 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM92 54a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm24 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM92 78a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm24-42a4 4 0 1 1 0-8 4 4 0 0 1 0 8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
   font-family: 'PT Sans', sans-serif;
   margin: 0;
   font-size: 1.1rem;
@@ -63,6 +67,7 @@ button {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto Slab', serif;
+  text-shadow: 0px 0px 10px #0a3c3dc4;
 }
 
 p {
@@ -78,7 +83,8 @@ a {
 nav {
   font-family: 'Roboto Slab', serif;
   grid-area: nav;
-  background-color: var(--color2)
+  background-color: var(--color2);
+  box-shadow: 0px 0px 10px #0a3c3dc4;
 }
 
 .nav-bar {
@@ -92,6 +98,11 @@ nav {
 
 .nav-bar a {
   color: var(--nav-text);
+  text-shadow: 0px 0px 10px #e2f2f781;
+}
+
+.nav-bar a:hover {
+  text-shadow: 0px 0px 10px #e2f2f7;
 }
 
 .nav-title {
@@ -123,9 +134,22 @@ footer {
   align-items: center;
   color: var(--nav-text);
   background-color: var(--color2);
+  box-shadow: 0px 0px 10px #0a3c3dc4;
+}
+
+.general-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 0px 15px #0a3c3dc4;
+  margin: 7px;
+  background-color: var(--color4);
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .home-search {
+  box-shadow: 0px 0px 15px #0a3c3dc4;
   background-color: var(--color4);
   border-radius: 10px;
   padding: 15px
@@ -139,12 +163,17 @@ footer {
 }
 
 .home-card {
+  box-shadow: 0px 0px 15px #0a3c3dc4;
   margin: 7px;
   width: 400px;
   display: flex;
   background-color: var(--color4);
   border-radius: 10px;
   padding: 15px;
+}
+
+.home-card:hover {
+  box-shadow: 0px 0px 15px #0a3c3dee;
 }
 
 .card-blurb{
@@ -167,6 +196,7 @@ footer {
   border-radius: 10px;
   padding: 15px;
   justify-content: space-between;
+  box-shadow: 0px 0px 10px #0a3c3dc4;
 }
 
 .search-right{
@@ -178,6 +208,7 @@ footer {
   padding: 15px;
   background-color: var(--color4);
   border-radius: 10px;
+  box-shadow: 0px 0px 10px #0a3c3dc4;
 }
 
 .profile-header{
@@ -186,6 +217,7 @@ footer {
   padding: 15px;
   background-color: var(--color4);
   border-radius: 10px;
+  box-shadow: 0px 0px 10px #0a3c3dc4;
 }
 
 .profile-icon{
@@ -205,6 +237,7 @@ footer {
   padding: 15px;
   background-color: var(--color4);
   border-radius: 10px;
+  box-shadow: 0px 0px 10px #0a3c3dc4;
 }
 
 .wish-list{
@@ -215,6 +248,7 @@ footer {
   padding: 15px;
   background-color: var(--color4);
   border-radius: 10px;
+  box-shadow: 0px 0px 10px #0a3c3dc4;
 }
 
 hr {
@@ -239,6 +273,7 @@ hr {
   padding: 15px;
   background-color: var(--color4);
   border-radius: 10px;
+  box-shadow: 0px 0px 10px #0a3c3dc4;
 }
 
 .message-icon{

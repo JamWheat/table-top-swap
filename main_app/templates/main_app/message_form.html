@@ -3,7 +3,8 @@
 {% block title %}Edit Message{% endblock %}
 
 {% block content %}
-  <h1>Edit Message</h1>
+<h1>Edit Message</h1>
+<div  class="general-card">
   <form action="" method="post">
     {% csrf_token %}
     <table>
@@ -11,4 +12,5 @@
     </table>
     <input type="submit" value="Edit" class="button">
   </form>
+</div>
 {% endblock %}

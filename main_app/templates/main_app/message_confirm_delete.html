@@ -7,17 +7,18 @@
 {% block content %}
 <h1>Delete Message</h1>
 
+<div  class="general-card">
+  <p><b>Are you sure you want to remove this message?<br>The message and all of its replies will be permanently deleted.</b></p>
 
-<h4>Are you sure you want to remove this message? The message and all of its replies will be permanently deleted.</h4>
+  {% comment %} <div>
+    <p>Sent to: {{ object.receiver }}</p>
+    <p>Message: {{ object.message }}</p>
+  </div> {% endcomment %}
 
-<div>
-  <p>Sent to: {{ object.receiver }}</p>
-  <p>Message: {{ object.message }}</p>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete" class="button">
+    <a href="{% url 'messages_view' %}" class="button">Cancel</a>
+  </form>
 </div>
-
-<form action="" method="POST">
-  {% csrf_token %}
-  <input type="submit" value="Delete" class="button">
-  <a href="{% url 'messages_view' %}" class="button">Cancel</a>
-</form>
 {% endblock %}

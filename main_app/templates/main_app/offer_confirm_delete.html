@@ -15,6 +15,7 @@
   Remove Wish List Item
 {% endif %}
 
+<div  class="general-card">
   <h4>Are you sure you want to remove {{ object.title }}?</h4>
 
   <form action="" method="POST">
@@ -26,4 +27,5 @@
       <a href="{% url 'profile' %}" class="button">Cancel</a>
     {% endif %}
   </form>
+</div>
 {% endblock %}
