@@ -12,9 +12,15 @@ def search(query):
   response = []
   for each in search_json_dict['boardgames']['boardgame']:
     if isinstance(each['name'], str):
-      response.append([each['@objectid'], each['name'], each['yearpublished']])
+      if 'yearpublished' in each:
+        response.append([each['@objectid'], each['name'], each['yearpublished']])
+      else:
+        response.append([each['@objectid'], each['name'], 0000])
     else:
-      response.append([each['@objectid'], each['name']['#text'], each['yearpublished']])
+      if 'yearpublished' in each:
+        response.append([each['@objectid'], each['name']['#text'], each['yearpublished']])
+      else:
+        response.append([each['@objectid'], each['name']['#text'], 0000])
   return response
 
 def find(query):

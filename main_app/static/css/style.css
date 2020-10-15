@@ -240,6 +240,10 @@ footer {
   box-shadow: 0px 0px 10px #0a3c3dc4;
 }
 
+.offer-card:hover{
+  box-shadow: 0px 0px 15px #0a3c3dee;
+}
+
 .wish-list{
   width: 300px;
   margin: 5px;
