@@ -63,7 +63,7 @@ def about(request):
 def games_search(request):
   return render(request, 'games_search.html')
 
-def bgg_search(request):
+def game_lookup(request):
   results = search(request.POST['query'])
   return render(request, 'games_search.html', { 'results': results })
 

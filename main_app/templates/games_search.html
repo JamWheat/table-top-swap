@@ -7,7 +7,7 @@
 <h1>Find a Game to Offer</h1>
 
 <div class="home-search">
-  <form action="{% url 'bgg_search' %}" method="POST">
+  <form action="{% url 'game_lookup' %}" method="POST">
     {% csrf_token %}
     <input type='text' name="query" placeholder="Search for a game...">
     <input type="submit" value="Search">
