@@ -105,11 +105,9 @@ class OfferDelete(LoginRequiredMixin, DeleteView):
   model = Offer
   success_url = '/users/profile/'
 
+@login_required
 def offer_search(request):
-  if request.user:
-    offers = Offer.objects.filter(title__icontains=request.POST['query']).exclude(user=request.user)
-  else:
-    offers = Offer.objects.filter(title__icontains=request.POST['query'])
+  offers = Offer.objects.filter(title__icontains=request.POST['query']).exclude(user=request.user)
   return render(request, 'home.html', {'offers':offers})
 
 
